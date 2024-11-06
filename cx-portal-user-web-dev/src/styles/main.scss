@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Helpers
+@import './helpers/mixins';
+@import './helpers/variables';
+
+//Base
+@import './base/reset';
+@import './base/font';
+@import './base/common';
+
+// Layout
+@import './layout/wrapper';
+@import './layout/header';
+@import './layout/sidebar';
+@import './layout/footer';
+
+// Components
+@import './components/button';
+@import './components/box';
+@import './components/form';
+@import './components/table';
+@import './components/pagination';
+@import './components/datepicker';
+@import './components/textfield';
+@import './components/selector';
+@import './components/modal';
+@import './components/progress';
+@import './components/tab';
+@import './components/filter';
+
+//Pages

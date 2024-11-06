@@ -1,0 +1,63 @@
+.sidebar {
+  flex: 0 0 auto;
+  width: var(--sidebar-size);
+  height: 100%;
+  background-color: var(--sidebar-bg-color);
+
+  &__scroll-area {
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  .logo--sm {
+    @apply flex justify-center;
+    padding: 45px 20px 25px;
+  }
+
+  &__menu {
+    position: relative;
+    > ul {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      cursor: pointer;
+
+      > li {
+        @apply flex flex-col items-center justify-center;
+        width: 100%;
+        height: var(--sidebar-size);
+
+        .icon,
+        span {
+          transition: var(--transition);
+        }
+
+        span {
+          font-size: var(--font-size-14);
+          color: var(--color-white);
+        }
+
+        &.is-active {
+          span {
+            font-size: var(--font-size-14);
+            font-weight: 700;
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+
+  &__bubble {
+    @include icon('side-bg-path__full--fff');
+    z-index: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: var(--sidebar-size);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}

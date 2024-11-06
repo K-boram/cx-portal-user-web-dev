@@ -1,0 +1,26 @@
+@mixin box(
+  $padding,
+  $bd-color: transparent,
+  $radius: var(--radius-sm),
+  $bg-color: var(--color-white)
+) {
+  padding: $padding;
+  background-color: $bg-color;
+  border: 1px solid $bd-color;
+  border-radius: $radius;
+  box-sizing: border-box;
+}
+.box {
+  &--fff {
+    @include box(40px, $radius: var(--radius-lg));
+  }
+  &--f7f {
+    @include box(30px, $bg-color: var(--color-gray-200));
+    .el-table {
+      th,
+      tr {
+        background-color: var(--color-gray-200) !important;
+      }
+    }
+  }
+}

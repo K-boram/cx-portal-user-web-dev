@@ -1,0 +1,130 @@
+// Layout
+:root {
+  --layout-min-width: 1280px;
+
+  //전체 헤더 높이 값
+  --header-height: calc(var(--main-header-height) + var(--gnb-height));
+  
+  --main-header-height: 80px;
+  --main-header-bg-color: var(--color-white);
+
+  --gnb-height: 52px;
+  --gnb-bg-color: var(--color-blue-800);
+  --gnb-menu-width: 184px;
+
+  --sidebar-size: 112px;
+  --sidebar-bg-color: var(--color-blue-700);
+
+  --footer-height: 40px;
+}
+
+// Typography
+$font-size-map: (
+  24: 24px,
+  20: 20px,
+  16: 16px,
+  14: 14px,
+  12: 12px,
+  11: 11px
+);
+:root {
+  @each $key, $value in $font-size-map {
+    --font-size-#{$key}: #{$value};
+  }
+}
+
+//Color
+:root {
+  //Primary
+  --color-primary: #ec008b;
+
+  //Secondary
+  --color-secondary: #7d4faa;
+
+  //Negative
+  --color-negative: var(--color-gray-150); 
+
+  //GrayScale
+  --color-gray-700: #010101;
+  --color-gray-650: #222222;
+  --color-gray-600: #333333;
+  --color-gray-500: #555555;
+  --color-gray-400: #666666;
+  --color-gray-350: #72787f;
+  --color-gray-300: #999999;
+  --color-gray-200: #cccccc;
+  --color-gray-150: #dddddd;
+  --color-gray-100: #e8ebed;
+  --color-gray-75: #f0f0f0;
+  --color-gray-50: #f9f9f9;
+
+  // TODO :: 임시 추가. 컬러 번호 변경 가능성 있음
+  --color-blue-800: #3f4255;
+  --color-blue-700: #5a5e77;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-red: #f42d1a;
+  --color-yellow: #fdba2e;
+  --color-green: #93c752;
+}
+
+// Form
+:root {
+  $form-gap-map: (
+    4: 4px,
+    8: 8px
+  );
+  @each $key, $value in $form-gap-map {
+    --form-gap-#{$key}: #{$value};
+  }
+
+  --form-height-xs: 28px;
+  --form-height-sm: 32px;
+  --form-height-md: 36px;
+  --form-height-lg: 40px;
+
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 21px;
+  --radius-lg: 24px;
+  --radius-xl: 30px;
+
+  // text field ui 공통 스타일 변수
+  --form-border-color: var(--color-gray-100); // 해당 컬러로 통일. 시안마다 컬러 다름
+  --form-radius: var(--radius-xs);
+  --form-height: var(--form-height-lg);
+  --form-text-color: var(--color-gray-600);
+  --form-font-size: var(--font-size-12);
+  --form-padding: 12px;
+  --form-placeholder-text-color: var(--color-gray-300);
+  --form-focus-border-color: var(--color-gray-600);
+  --form-disabled-bg-color: var(--color-gray-50);
+  --form-disabled-border-color: var(--form-border-color);
+  --form-readonly-bg-color: var(--form-disabled-bg-color);
+  
+  --form-disabled-text-color: var(--color-gray-300);
+  --form-validation-color: var(--color-red);
+  --form-active-color: var(--color-primary);
+}
+
+$textfield-size: (
+  sm: var(--form-height-xs),
+  md: var(--form-height-lg),
+  lg: var(--form-height-lg)
+);
+
+// Modal
+:root {
+  // --modal-width-sm: 360px;
+  // --modal-width-md: 600px;
+  // --modal-width-lg: 820px;
+  // --modal-width-xl: 1400px;
+}
+
+// ETC
+:root {
+  --transition: all 0.15s linear;
+  --font-family: 'Pretendard', -apple-system, system-ui, Roboto, 'Apple SD Gothic Neo',
+    'Malgun Gothic', sans-serif;
+}

@@ -1,0 +1,134 @@
+// /* ========================== Variables ========================== */
+// /* ========================== Mixins ========================== */
+
+// /* ========================== Styles ========================== */
+
+// // Confirm
+// // 팝업 오픈시 페이지 밀리는 이슈 해결을 위한 css
+// .el-popup-parent--hidden {
+//   width: initial !important;
+// }
+
+// .el-overlay-message-box {
+//   .el-message-box {
+//     max-width: 258px;
+//     padding: 0;
+//     border-radius: var(--radius-sm);
+//     .el-message-box {
+//       &__header {
+//         padding: 28px 20px 8px;
+//       }
+//       &__title {
+//         @include typo(var(--font-size-16), 600);
+//       }
+//       &__content {
+//         @include typo($font-weight: 500);
+//         padding: 0 20px 24px;
+//       }
+//       &__btns {
+//         padding-top: 0;
+//         border-top: 1px solid var(--color-gray-350);
+//         button {
+//           @apply flex-1;
+//           @include typo($color: var(--color-gray-750));
+//           height: 49px;
+//           margin: 0;
+//           padding: 17px 46px;
+//           background: var(--color-white);
+//           border-radius: 0;
+//           border: 0;
+//           & + button {
+//             border-left: 1px solid var(--color-gray-350);
+//           }
+//           &:focus-visible {
+//             outline: none;
+//           }
+//         }
+//       }
+//     }
+//     &--center {
+//       .el-message-box {
+//         &__content {
+//           padding-top: 28px !important;
+//           text-align: center;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// // Modal
+// .el-overlay {
+//   background-color: rgba(0, 0, 0, 0.67) !important;
+// }
+// .el-overlay-dialog {
+//   .el-dialog {
+//     padding: 0;
+//     border-radius: var(--radius-lg);
+//     &__header {
+//       @include typo(var(--font-size-24), 600, var(--color-gray-800), 29px);
+//       position: relative;
+//       padding: 20px 60px;
+//       padding-right: 60px !important;
+//       border-bottom: 1px solid var(--color-gray-400);
+//       text-align: center;
+//     }
+//     &__headerbtn {
+//       top: 50%;
+//       right: 20px;
+//       width: 40px;
+//       height: 40px;
+//       transform: translateY(-50%);
+//       font-size: unset;
+//       &:hover,
+//       &:focus {
+//         .el-dialog__close {
+//           @include typo(var(--font-size-26), $color: var(--color-gray-800));
+//         }
+//       }
+//       .el-dialog__close {
+//         @include typo(var(--font-size-26), $color: var(--color-gray-800));
+//       }
+//     }
+//     &__body {
+//       @include typo($color: var(--color-gray-750));
+//       overflow-y: auto;
+//       max-height: 600px;
+//       padding: 30px 30px 0;
+//     }
+//     &__footer {
+//       @apply flex items-center justify-center;
+//       padding: 20px 30px 30px;
+//     }
+//     .el-tree {
+//       overflow-y: auto;
+//       width: 100%;
+//       height: 200px;
+//       padding: 15px;
+//       border: 1px solid var(--form-border-color);
+//     }
+//   }
+// }
+
+// // 리니지 팝업
+// .lineage-p {
+//   .el-dialog {
+//     &__body {
+//       height: 800px;
+//     }
+//   }
+//   &__content {
+//     @apply flex;
+//     height: 100%;
+
+//     f-lineage {
+//       @apply flex items-center flex-1;
+//       overflow: hidden;
+//     }
+//     .form {
+//       width: 40%;
+//       padding-left: 30px;
+//       border-left: 1px solid var(--color-gray-350);
+//     }
+//   }
+// }

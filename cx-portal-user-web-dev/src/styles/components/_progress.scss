@@ -1,0 +1,16 @@
+/* ========================== Variables ========================== */
+
+/* ========================== Mixins ========================== */
+
+/* ========================== Styles ========================== */
+.el-loading-parent--relative {
+  .el-loading-mask {
+    .el-loading {
+      &-spinner {
+        .path {
+          stroke: var(--color-primary);
+        }
+      }
+    }
+  }
+}

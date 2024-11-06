@@ -1,0 +1,252 @@
+/* ========================== Variables ========================== */
+* {
+  --calendar-width: 224px;
+  --calendar-cell-size-md: 24px;
+  --calendar-cell-size-lg: 32px;
+}
+
+.dp {
+  &__menu {
+    --dp-menu-min-width: var(--calendar-width) !important;
+    --dp-font-family: var(--font-family) !important;
+    --dp-primary-color: var(--color-gray-500) !important;
+    --dp-cell-border-radius: var(--radius-xl) !important;
+    --dp-text-color: var(--color-gray-350) !important;
+    --dp-menu-padding: 0 !important;
+    --dp-font-size: var(--font-size-14) !important;
+  }
+  &__calendar_header_item {
+    --dp-cell-size: var(--calendar-cell-size-md);
+    --dp-cell-padding: 0;
+  }
+  &__calendar_row {
+    --dp-row-margin: var(--form-gap-4);
+  }
+  &__cell_inner {
+    --dp-cell-size: var(--calendar-cell-size-lg);
+    --dp-cell-padding: 0;
+  }
+  &__cell_offset {
+    --dp-secondary-color: var(--form-placeholder-text-color);
+  }
+  &__input {
+    --dp-border-radius: var(--form-radius);
+    --dp-font-family: var(--font-family);
+    --dp-border-color: var(--form-border-color);
+    --dp-input-padding: 0 var(--form-padding);
+    --dp-text-color: var(--form-text-color);
+    --dp-input-icon-padding: var(--form-padding);
+    --dp-font-size: var(--form-font-size);
+    --dp-border-color-hover: var(--form-border-color);
+    --dp-border-color-focus: var(--form-focus-border-color);
+  }
+}
+
+/* ========================== Mixins ========================== */
+/* ========================== Styles ========================== */
+// 자체 컴포넌트 스타일
+.datepicker {
+  // Input
+  &__input {
+    @apply flex items-center;
+    width: 100%;
+    height: var(--form-height-lg);
+    padding: 0 var(--form-padding);
+    background-color: var(--color-white);
+    border: 1px solid var(--form-border-color);
+    border-radius: var(--form-radius);
+    transition: var(--transition);
+    color: var(--form-text-color);
+    word-break: break-all;
+    cursor: pointer;
+    
+
+    &-text {
+      margin-right: var(--form-padding);
+      font-size: var(--form-font-size);
+      font-weight: 500;
+
+      &.is-empty {
+        color: var(--form-placeholder-text-color);
+        & + .datepicker__icon {
+          svg {
+            path {
+              fill: var(--form-placeholder-text-color);
+            }
+          }
+        }
+      }
+    }
+
+    &.is-disabled {
+      background-color: var(--form-disabled-bg-color);
+      color: var(--form-disabled-text-color);
+      cursor: not-allowed;
+
+      .datepicker__icon {
+        svg {
+          path {
+            fill: var(--form-disabled-text-color);
+          }
+        }
+      }
+    }
+
+    &.is-focus {
+      border-color: var(--form-focus-border-color);
+    }
+  }
+  // Dropdown
+  &__popover {
+    &.el-popper.el-popover {
+      width: calc((var(--calendar-width) * 2) + (var(--calendar-cell-size-md) * 5)) !important;
+      padding: var(--calendar-cell-size-md);
+      border-color: var(--color-gray-150);
+      box-shadow: unset;
+      border-radius: var(--radius-sm);
+    }
+  }
+
+  &__header {
+    @apply flex justify-end;
+    height: var(--calendar-cell-size-md);
+    margin-bottom: 16px;
+  }
+
+  &__body {
+    @apply flex;
+    @include space(24px);
+    padding: 0 var(--calendar-cell-size-md);
+  }
+
+  &__date {
+    @apply flex flex-col items-center;
+  }
+
+  &__title {
+    line-height: 17px;
+    margin-bottom: 20px;
+    font-size: var(--font-size-14);
+    color: var(--color-gray-650);
+
+    &.is-bold {
+      font-weight: 700;
+    }
+
+    &--date {
+      @apply flex items-center;
+      @include space(var(--form-gap-8));
+      color: var(--color-gray-650);
+      span {
+        font-size: var(--font-size-12);
+        font-weight: 400;
+      }
+      em {
+        font-size: var(--font-size-20);
+        font-weight: 700;
+      }
+      
+    }
+  }
+
+  &__current-date {
+    @apply flex items-center;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-gray-150);
+    font-size: var(--font-size-12);
+    color: var(--color-gray-650);
+    > p {
+      @include space(var(--form-gap-8));
+    }
+    > span {
+      margin: 0 16px;
+    }
+  }
+
+  &__footer {
+    @apply flex justify-center;
+    @include space(var(--form-gap-8));
+    margin-top: 16px;
+  }
+}
+
+// 라이브러리 스타일
+.dp {
+  &__menu {
+    max-width: var(--calendar-width);
+    border: 0 !important;
+
+    &.is-single {
+      max-width: unset !important;
+      padding: var(--calendar-cell-size-md);
+      border: 1px solid var(--color-gray-150) !important;
+      border-radius: var(--radius-sm);
+    }
+  }
+
+  &__month_year_wrap {
+    @apply justify-between items-center;
+    height: var(--calendar-cell-size-md);
+  }
+
+  &--header-wrap {
+    margin-bottom: 20px;
+  }
+
+  &__calendar_header {
+    font-weight: 300 !important;
+  }
+
+  &__calendar_header_item {
+    @apply flex items-center justify-center;
+    max-width: var(--calendar-cell-size-lg);
+  }
+
+  &__calendar_header_separator,
+  &__arrow_top,
+  &__arrow_bottom {
+    display: none;
+  }
+
+  &__calendar_item {
+    max-width: var(--calendar-cell-size-lg);
+  }
+
+  &__cell_inner {
+    font-size: var(--font-size-14);
+    font-weight: 400;
+    color: var(--color-gray-650);
+  }
+
+  &__cell_disabled {
+    &.dp__today {
+      background-color: var(--color-white);
+    }
+  }
+
+  &__input {
+    @include icon('calendar__line--333', 12px);
+    width: 100%;
+    height: var(--form-height-lg);
+    line-height: unset !important;
+    background-position: calc(100% - var(--form-padding));
+    word-break: break-all;
+    font-weight: 500;
+    transition: var(--transition) !important; 
+    cursor: pointer;
+
+    &.dp__disabled {
+      @include icon('calendar__line--999', 12px);
+      background-color: var(--form-disabled-bg-color);
+      background-position: calc(100% - var(--form-padding));
+      cursor: not-allowed;
+      color: var(--form-disabled-text-color);
+    }
+  }
+
+  &__input_icon,
+  &--clear-btn {
+    display: none !important;
+  }
+}

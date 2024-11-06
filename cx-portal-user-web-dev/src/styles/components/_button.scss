@@ -1,0 +1,206 @@
+/* ========================== Variables ========================== */
+
+  // Todo 지은 :: 전체적인 리팩토링 필요
+
+
+$btn-sizes: (
+  sm: (width: 62px, height: var(--form-height-xs), radius: var(--radius-xs)),
+  md: (width: 100px, height: var(--form-height-sm), radius: var(--radius-sm)),
+  lg: (width: 120px, height: var(--form-height-lg), radius: var(--radius-xs)),
+  xl: (width: 162px, height: var(--form-height-lg), radius: var(--radius-lg)),
+);
+
+$primary-btn-colors: (
+  hover: #FF309E,
+  hover-bg: #FFD7EC,
+  active: #9E105C,
+  active-bg: #E87AB4,
+  disabled: #ECB5D2,
+);
+
+:root {
+  --btn-margin: 4px;
+}
+
+/* ========================== Mixins ========================== */
+@mixin btn-base ($size: 'lg') {
+  $size-map: map-get($btn-sizes, $size);
+  @apply flex justify-center items-center;
+  @include space(var(--form-gap-4));
+  width: fit-content;
+  min-width: map-get($size-map, width);
+  height: map-get($size-map, height);
+  padding: 0 16px;
+  border-radius: map-get($size-map, radius);
+  text-align: center;
+  transition: var(--transition);  
+
+  &.w-270 {
+    min-width: 270px;
+  }
+}
+
+@mixin btn-color($color, $type) {
+  $prop-color: var(--color-#{$color});
+  background-color: if($type == 'full', $prop-color, var(--color-white));
+  border: 1px solid $prop-color;
+  color:$prop-color;
+  font-weight:700;
+  @if ($type == 'full') {
+    color:var(--color-white)
+  }
+  // 버튼 상태별 스타일 (primary 한정)
+  @if $color == 'primary' {
+    @each $state in 'hover', 'active', 'disabled' {
+      &:#{$state} {
+        border-color: map-get($primary-btn-colors, $state);
+        background-color: if($type == 'full', map-get($primary-btn-colors, $state), map-get($primary-btn-colors, $state+'-bg'));
+        color: if($type == 'full', var(--color-white), map-get($primary-btn-colors, $state));
+        svg {
+          path, rect, stroke {
+            fill: map-get($primary-btn-colors, $state);
+          }
+        }
+      }
+    }
+
+    @if $type == 'line' {
+      &:disabled {
+        background-color: var(--color-white);
+      }
+    }
+  }
+
+  @if $color == 'secondary' {
+    font-size: var(--font-size-16);
+  }
+
+  @if $color == 'negative' {
+    font-size: var(--font-size-12);
+    font-weight: 500;
+    color: var(--color-gray-600);
+  }
+
+}
+/* ========================== Styles ========================== */
+.btn {
+  &__group {
+    @apply flex items-center; 
+    @include space($x: var(--btn-margin));
+    &--col {
+      @apply flex flex-col;
+      @include space($x: 0, $y: var(--btn-margin));
+    }
+    .btn__text {
+      & + .btn__text {
+        margin-left: 36px;
+      }
+    }
+  }
+
+  @each $color in 'primary', 'secondary', 'negative' {
+    @each $type in 'full', 'line' {
+      &__#{$color}#{if($type == 'full', '', '-#{$type}')} {
+        @include btn-base;
+        @include btn-color($color, $type);
+  
+        @if $color != 'secondary' {
+          @each $size in 'sm', 'md' {
+            &--#{$size} {
+              @include btn-base($size);
+              @include btn-color($color, $type);
+            }
+          }
+        }
+
+        @if $color == 'secondary' {
+          @include btn-base('xl');
+        }
+      }
+    }
+  }
+
+  &__text {
+    padding: 10px;
+    color: var(--color-black);
+
+    &--bold {
+      @extend .btn__text;
+      font-weight: 600
+    }
+  }
+
+  &__icon {
+    @apply flex items-center justify-center;
+    border-radius: var(--radius-xl);
+    &--md {
+      @extend .btn__primary-line;
+      @extend .btn__icon;
+      width: 36px;
+      min-width: 36px;
+      height: 36px;
+    }
+    &--sm {
+      @extend .btn__icon;
+      width: 16px;
+      min-width: 16px;
+      height: 16px;
+      border: 1px solid var(--color-gray-300);
+    }
+  }
+}
+
+// 파일, 이미지 첨부 버튼
+.btn__upload {
+  @apply flex items-center;
+  &-btn {
+    @extend .btn__negative-line--md;
+    min-width: 85px;
+    padding: 0 10px 0 12px;
+    cursor: pointer;
+  }
+  &-placeholder {
+    @apply flex-1 truncate;
+    margin-left: 12px;
+    font-size: var(--font-size-12);
+    font-weight: 300;
+    color: var(--color-gray-300);
+  }
+  &-list {
+    margin-left: 12px;
+    &--readonly {
+      @apply flex items-center;
+      @include space($x:20px);
+      color: var(--color-gray-650);
+      & {
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-position: under;
+      }
+    }
+  }
+}
+
+// Custom-Tag
+.custom-tag {
+  @include space($x: var(--form-gap-4));
+  & {
+    @apply flex flex-wrap;
+  }
+
+  &__tag {
+    @apply flex items-center;
+    height: 24px;
+    padding: 0 12px;
+    background: var(--color-gray-75);
+    border-radius: var(--form-radius);
+    font-weight: 500;
+    font-size: var(--font-size-12);
+    color: var(--color-gray-500);
+  }
+
+  &__btn {
+    margin-left: 8px;
+    cursor: pointer;
+  }
+}

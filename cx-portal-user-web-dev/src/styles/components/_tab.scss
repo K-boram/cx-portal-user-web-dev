@@ -1,0 +1,39 @@
+// .tab {
+//     @apply flex justify-between;
+//     width: 100%;
+//     height: 33px;
+//     &__menu {
+//         @apply flex items-center;
+//         @include space($x: 16px);
+//     }
+//     &__item {
+//         @apply flex items-center justify-center;
+//         height: 100%;
+//         span {
+//             @include typo(var(--font-size-14), 600, var(--color-gray-300));
+//             position: relative;
+//             padding: 8px 12px;
+//             cursor: pointer;
+//             transition: var(--transition);
+//             &::after {
+//                 opacity: 0;
+//                 position: absolute;
+//                 bottom: 0;
+//                 left: 0;
+//                 right: 0;
+//                 content: '';
+//                 width: 100%;
+//                 height: 2px;
+//                 background-color: var(--color-primary);
+//                 transition: var(--transition);
+//             }
+//             &.is-active {
+//                 @include typo(var(--font-size-14), 600, var(--color-gray-700));
+//                 transition: var(--transition);
+//                 &::after {
+//                     opacity: 1;
+//                 }
+//             }
+//         }
+//     }
+// }

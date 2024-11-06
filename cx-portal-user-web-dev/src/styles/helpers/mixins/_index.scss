@@ -1,0 +1,43 @@
+@import './typography';
+@import './space';
+
+/* ========================== prefix ========================== */
+$prefix-list: webkit, moz, ms, o;
+
+@mixin auto-prefix($name, $value) {
+  @each $prefix in $prefix-list {
+    -#{$prefix}-#{$name}: $value;
+  }
+  #{$name}: $value;
+}
+
+/* ========================== Icon ========================== */
+@mixin icon($name, $size: '100%', $path: '/icon/', $format: 'svg') {
+  background: url('#{$path}#{$name}.#{$format}') no-repeat center center/#{$size};
+}
+
+/* ========================== 가상선택자 ========================== */
+@mixin before($w: null, $h: null) {
+  position: relative;
+
+  &::before {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    width: $w;
+    height: $h;
+    @content;
+  }
+}
+@mixin after($w: null, $h: null) {
+  position: relative;
+
+  &::after {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    width: $w;
+    height: $h;
+    @content;
+  }
+}

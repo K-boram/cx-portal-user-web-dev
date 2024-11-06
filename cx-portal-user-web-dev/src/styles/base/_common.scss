@@ -1,0 +1,12 @@
+$form-width-map: (
+  130: 130px,
+  156: 156px
+);
+@each $key, $value in $form-width-map {
+  .w-#{$key} {width:#{$value}!important}
+}
+
+.is-flexible {
+  @apply flex-1;
+  width: 100% !important;
+}

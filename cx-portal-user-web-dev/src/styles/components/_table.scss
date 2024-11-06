@@ -1,0 +1,110 @@
+// /* ========================== Variables ========================== */
+
+// /* ========================== Mixins ========================== */
+
+// /* ========================== Styles ========================== */
+// // Table
+// .table {
+//   &-header {
+//     @apply flex items-end justify-between;
+//     @include typo(var(--font-size-16));
+//     margin-bottom: 10px;
+
+//     &__total {
+//       em {
+//         @include typo(var(--font-size-16), $color: var(--color-primary));
+//       }
+//     }
+
+//     &__btn {
+//       @apply flex;
+//       margin-top: -10px;
+//     }
+//   }
+// }
+
+// .el-table {
+//   .el-table {
+//     &__inner-wrapper {
+//       &::before {
+//         background-color: var(--color-gray-400);
+//       }
+//     }
+//     &__header {
+//       thead {
+//         @include typo(var(--font-size-15), 600, var(--color-gray-750));
+//         height: 43px;
+//       }
+//       .el-table__cell.is-leaf {
+//         padding: 0;
+//         border-bottom: 1px solid var(--color-gray-750);
+//         text-align: center;
+//       }
+//     }
+
+//     &__body {
+//       .el-table__cell {
+//         @include typo($color: var(--color-gray-750));
+//         height: 56px;
+//         padding: 10px 0;
+//         border-bottom: 1px solid var(--color-gray-400);
+//         .cell {
+//           @include truncate;
+//         }
+//         &.el-table-column--selection {
+//           .cell {
+//             @apply flex items-center justify-center;
+//             .el-checkbox {
+//               margin-right: 0 !important;
+//             }
+//           }
+//         }
+//       }
+
+//       .el-table__row {
+//         cursor: pointer;
+//         &:hover {
+//           td.el-table__cell {
+//             background: var(--color-primary);
+//           }
+//         }
+//         .cell {
+//           padding: 0 8px;
+//         }
+//         button {
+//           & + button {
+//             margin-left: 10px;
+//           }
+//         }
+//       }
+//     }
+//   }
+//   &.no-hover {
+//     .el-table__body {
+//       .el-table__row {
+//         .el-table__cell {
+//           &.hover-cell {
+//             background-color: transparent;
+//           }
+//         }
+//         &:hover {
+//           td.el-table__cell {
+//             background-color: transparent;
+//           }
+//         }
+//       }
+//     }
+//   }
+//   &--small {
+//     .el-table__body {
+//       .el-table__cell {
+//         @include typo(var(--font-size-14));
+//         height: 50px;
+//         padding: 6px 0;
+//       }
+//     }
+//   }
+//   & + .pagination {
+//     margin-top: 20px;
+//   }
+// }

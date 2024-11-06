@@ -1,0 +1,125 @@
+/* ========================== Variables ========================== */
+
+/* ========================== Mixins ========================== */
+
+/* ========================== Styles ========================== */
+.form {
+  @include space($y: 20px);
+
+  &__item {
+    @apply flex flex-col items-start;
+    @include space($y: 4px);
+
+    &.row-between {
+      @apply flex-row items-center justify-between;
+    }
+
+    .el-checkbox-group {
+      @include space($y: 10px);
+      & {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  &__group {
+    @apply flex items-center flex-wrap flex-1;
+    gap: 10px;
+
+    .el-select {
+      max-width: 167px;
+    }
+    .form__item {
+      & + .form__item {
+        margin-left: 30px;
+      }
+    }
+    &--col {
+      @apply flex flex-col flex-1;
+      @include space($y: 10px);
+    }
+  }
+
+  &__upload {
+    @apply flex flex-col justify-center flex-1;
+    &-area {
+      @apply flex flex-col items-center justify-center;
+      @include box(25px 0, var(--form-border-color), var(--form-radius));
+      width: 100%;
+      color: var(--form-text-color);
+      & + .form__upload--file {
+        margin-top: 10px;
+      }
+    }
+    &--file {
+      @apply flex;
+      a {
+        &:hover {
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        }
+      }
+    }
+  }
+}
+.search-form {
+  @apply flex justify-between items-end;
+  @include box(20px 40px);
+  width: 100%;
+  margin-top: 30px;
+
+  &__item-area {
+    @apply flex items-center flex-wrap flex-1;
+    gap: 20px;
+  }
+
+  &__item {
+    @apply flex items-center;
+    @include space($x: 10px);
+    .search-form__item {
+      width: 50%;
+    }
+    &:last-child {
+      @apply flex flex-1;
+    }
+  }
+
+  &__label {
+    min-width: fit-content;
+    line-height: var(--form-height-lg);
+    margin-right: 10px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  &__btn-area {
+    @apply flex items-center;
+    @include space($x: 10px);
+    & {
+      padding-left: 10px;
+    }
+  }
+  .el-select {
+    width: 167px;
+  }
+  .custom-input {
+    min-width: 200px;
+  }
+  .el-date-editor {
+    max-width: 400px;
+  }
+}
+
+
+.form__label {
+  line-height: 14px;
+  font-size: var(--font-size-12);
+  font-weight: 700;
+  color: var(--color-gray-600);
+  &.color-white {
+    color: var(--color-white);
+  }
+  &.size-md {
+    font-size: var(--font-size-14);
+  }
+}

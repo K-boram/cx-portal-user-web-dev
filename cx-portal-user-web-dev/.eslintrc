@@ -1,0 +1,8 @@
+{
+  "extends": "@antfu",
+  "rules": {
+    // your overrides
+    "no-console": "off",
+    "antfu/top-level-function": "off"
+  }
+}

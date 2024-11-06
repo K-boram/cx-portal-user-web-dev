@@ -1,0 +1,44 @@
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  line-height: 1.2;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  background-color: var(--color-gray-250);
+  color: var(--color-gray-600);
+  text-size-adjust: none;
+  font-family: var(--font-family);
+  font-size: var(--font-size-14);
+  font-weight: 400;
+}
+
+#app {
+  overflow: auto; // 임시 스타일
+}
+
+.layout {
+  @apply flex flex-col;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrapper {
+  @apply flex;
+  flex: 1 1 0%;
+  min-height: 0px;
+}
+
+.content {
+  overflow: auto;
+  width: 100%;
+  
+  &-body {
+    min-width: var(--layout-min-width);
+    min-height: calc(100% - var(--footer-height));
+  }
+}

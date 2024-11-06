@@ -1,0 +1,139 @@
+/* ========================== Variables ========================== */
+:root {
+    --filter-width: 335px;
+    --filter-gap: 32px; 
+    --filter-transition: transform .3s ease;
+}
+/* ========================== Mixins ========================== */
+
+/* ========================== Styles ========================== */
+.filter {
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    bottom: 0;
+    width: var(--filter-width);
+    height: calc(100% - var(--header-height));
+
+    &__toggle {
+        @apply flex items-center justify-center;
+        position: fixed;
+        top: calc(var(--header-height) + 91px);
+        right: 0;
+        width: var(--filter-gap);
+        height: 80px;
+        background-color: var(--color-white);
+        box-shadow: -4px 0px 20px 0px #EC017E40;
+        border-radius: 16px 0 0 16px;
+        transition: var(--filter-transition);
+        transform: translateX(0);
+        .icon {
+            transform: scaleX(-1);
+            transition: var(--filter-transition);
+        }
+        &.is-open {
+            transform: translateX(calc(-1*var(--filter-width)));
+            .icon {
+                transform: unset;
+            }
+        }
+    }
+
+    &__box {
+        @apply flex flex-col;
+        overflow-y: hidden;
+        height: 100%;
+        padding: var(--filter-gap) 0 var(--filter-gap) var(--filter-gap);
+        background-color: #1f101066;
+    }
+
+    &__header {
+        @apply flex items-center justify-between;
+        margin-right: var(--filter-gap);
+        margin-bottom: calc(var(--filter-gap) / 2);
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--color-white);
+        > span {
+            font-size: var(--font-size-16);
+            font-weight: 700;
+            color: var(--color-white);
+        }
+    }
+
+    &__content {
+        @include space($y:16px);
+        overflow-y: auto;
+        padding: calc(var(--filter-gap) / 2) var(--filter-gap) calc(var(--filter-gap) / 2) 0;
+        max-height: 100%;
+    }
+
+    .btn__group {
+        margin-top: calc(var(--filter-gap) / 2);
+        margin-right: var(--filter-gap);
+    }
+
+    // 인터랙션
+    .slide {
+        &-enter-active,
+        &-leave-active {
+            transition: var(--filter-transition);
+        }
+        &-enter-from,
+        &-leave-to {
+            transform: translateX(100%);
+        }
+        &-enter-to,
+        &-leave-from {
+            transform: translateX(0);
+        }
+    }
+
+    // 필터 내 UI Comp 개별 스타일
+    .datepicker {
+        --filter-bg-color: var(--color-gray-400);
+        .dp{
+            &__main {
+                --dp-font-family: var(--font-family);
+                --dp-border-color: var(--filter-bg-color);
+                --dp-border-color-focus: var(--filter-bg-color);
+                --dp-border-color-hover: var(--filter-bg-color);
+                --dp-background-color: var(--filter-bg-color);
+                --dp-border-radius: var(--radius-xs);
+                --dp-font-size: var(--font-size-12);
+                --dp-input-padding: 10px 10px 10px 12px;
+                --dp-text-color: var(--color-gray-100);
+                --dp-icon-color: var(--dp-text-color);
+            }
+            &__input {
+                height: var(--form-height-md);
+            }
+            &--clear-btn {
+                display: none;
+            }
+        }
+    }
+
+    .el-select {
+        .el-select {
+            &__wrapper {
+                height: var(--form-height-sm);
+                padding: 10px 10px 10px 12px;
+                background-color: var(--color-white);
+                border: 1px solid var(--color-gray-100);
+                border-radius: var(--radius-xs);
+            }
+            &__input {
+                --el-select-multiple-input-color: var(--color-gray-300);
+            }
+            &__suffix {
+                @include icon('arrow-b__line--999');
+            }
+            &__caret {
+                display: none;
+            }
+            &__popper {
+                background-color: var(--color-white);
+            }
+        }
+    }
+}

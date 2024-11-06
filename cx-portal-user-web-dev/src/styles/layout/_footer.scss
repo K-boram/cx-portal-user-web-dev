@@ -1,0 +1,10 @@
+.footer {
+    @apply flex items-center justify-center;
+    min-width: var(--layout-min-width);
+    height: var(--footer-height);
+    > p {
+        font-size: var(--font-size-12);
+        font-weight: 400;
+        color: var(--color-gray-350);
+    }
+}

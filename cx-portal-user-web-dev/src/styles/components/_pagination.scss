@@ -1,0 +1,39 @@
+// /* ========================== Variables ========================== */
+
+// /* ========================== Mixins ========================== */
+// // @mixin pagination-size($size: md) {
+// //   @each $key, $value in $textfield-size {
+// //     &--#{$key} {
+// //       .pagination-container > li,
+// //       .paginate-buttons {
+// //         width: $value;
+// //         height: $value;
+// //       }
+// //     }
+// //   }
+// // }
+// /* ========================== Styles ========================== */
+// .pagination {
+//   @apply flex justify-center;
+//   // @include pagination-size();
+
+//   .pagination-container {
+//     @apply flex;
+//     @include space($x: 2px);
+//     .paginate-buttons {
+//       @include typo($color: var(--color-gray-700));
+//       width: 100%;
+//       height: 100%;
+//       border: 0;
+//       border-radius: var(--radius-sm);
+//       transition: var(--transition);
+//       &:hover {
+//         background: transparent;
+//       }
+//       &.active-page {
+//         @include typo($font-weight: 600, $color: var(--color-white));
+//         background: var(--color-primary);
+//       }
+//     }
+//   }
+// }
